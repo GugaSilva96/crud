@@ -8,12 +8,12 @@ Certifique-se de ter o módulo `tkinter` instalado. Se não o tiver, você pode 
 
 ```bash
 pip install tk
-
 Estrutura do Código
 O código está dividido em uma classe principal chamada CRUDApp. Aqui estão os principais componentes:
 
 Inicialização do Aplicativo
-
+python
+Copy code
 import tkinter as tk
 from tkinter import ttk
 import sqlite3
@@ -31,10 +31,9 @@ class CRUDApp:
 
         # Criar os widgets
         self.create_widgets()
-
-
 Criação da Tabela
-
+python
+Copy code
 def create_table(self):
     self.cursor.execute('''
         CREATE TABLE IF NOT EXISTS clientes (
@@ -45,10 +44,9 @@ def create_table(self):
         )
     ''')
     self.connection.commit()
-
-
 Configuração da Interface Gráfica
-
+python
+Copy code
 def create_widgets(self):
     # ...
 
@@ -70,9 +68,9 @@ def create_widgets(self):
     self.tree.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
     # ...
-
 Operações CRUD
-
+python
+Copy code
 def create_record(self):
     # ...
 
@@ -84,18 +82,26 @@ def update_record(self):
 
 def delete_record(self):
     # ...
-
 Limpeza de Entradas
-
+python
+Copy code
 def clear_entries(self):
     self.nome_entry.delete(0, tk.END)
     self.email_entry.delete(0, tk.END)
     self.telefone_entry.delete(0, tk.END)
-
-
 Execução do Aplicativo
-
+python
+Copy code
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = CRUDApp(root)
+    root.mainloop()
 Este é um exemplo básico para fins educativos. Certifique-se de adaptar o código conforme necessário para atender aos requisitos específicos do seu projeto.
 
+css
+Copy code
 
 Você pode copiar e colar esse conteúdo em um arquivo com a extensão `.md` para visualizá-lo como um documento Markdown.
+
+
+
