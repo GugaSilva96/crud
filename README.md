@@ -1,29 +1,21 @@
-# Aplicativo CRUD em Python com Tkinter e SQLite
+# CRUD App em Tkinter e SQLite
 
-Este é um exemplo simples de um aplicativo CRUD (Create, Read, Update, Delete) desenvolvido em Python utilizando a biblioteca Tkinter para a interface gráfica e SQLite como o banco de dados.
+## Descrição
+Este é um aplicativo CRUD (Create, Read, Update, Delete) simples implementado em Tkinter e SQLite. O aplicativo permite gerenciar registros de clientes, realizando operações básicas de banco de dados.
 
-## Requisitos
-
-Certifique-se de ter o módulo `tkinter` instalado. Se não o tiver, você pode instalá-lo com o seguinte comando:
-
-```bash
-pip install tk
-Estrutura do Código
-O código está dividido em uma classe principal chamada CRUDApp. Aqui estão os principais componentes:
-
-## Inicialização do Aplicativo
-
-python
-Copy code
+## Código-fonte
+```python
 import tkinter as tk
 from tkinter import ttk
 import sqlite3
 
 class CRUDApp:
     def __init__(self, root):
-        # ...
+        # Inicialização da aplicação
+        self.root = root
+        self.root.title("CRUD App")
 
-        # Conectar ao banco de dados SQLite
+        # Conectar ao banco de dados SQLite (será criado se não existir)
         self.connection = sqlite3.connect("crud_database.db")
         self.cursor = self.connection.cursor()
 
@@ -33,80 +25,45 @@ class CRUDApp:
         # Criar os widgets
         self.create_widgets()
 
-## Criação da Tabela
-python
-Copy code
-def create_table(self):
-    self.cursor.execute('''
-        CREATE TABLE IF NOT EXISTS clientes (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL,
-            email TEXT NOT NULL,
-            telefone TEXT
-        )
-    ''')
-    self.connection.commit()
-Configuração da Interface Gráfica
-python
-Copy code
-def create_widgets(self):
-    # ...
+    def create_table(self):
+        # Método para criar a tabela no banco de dados
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS clientes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nome TEXT NOT NULL,
+                email TEXT NOT NULL,
+                telefone TEXT
+            )
+        ''')
+        self.connection.commit()
 
-    # Labels e entradas para dados do cliente
-    ttk.Label(self.data_frame, text="Nome:").grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
-    self.nome_entry = ttk.Entry(self.data_frame)
-    self.nome_entry.grid(row=0, column=1, padx=5, pady=5, sticky=(tk.W, tk.E))
+    def create_widgets(self):
+        # Método para criar os widgets da interface gráfica
+        # ... (código omitido para brevidade)
 
-    # ...
+    def create_record(self):
+        # Método para criar um novo registro
+        # ... (código omitido para brevidade)
 
-    # Botões CRUD
-    ttk.Button(self.data_frame, text="Criar", command=self.create_record).grid(row=3, column=0, padx=5, pady=5, sticky=(tk.W, tk.E))
-    ttk.Button(self.data_frame, text="Ler", command=self.read_records).grid(row=3, column=1, padx=5, pady=5, sticky=(tk.W, tk.E))
-    ttk.Button(self.data_frame, text="Atualizar", command=self.update_record).grid(row=3, column=2, padx=5, pady=5, sticky=(tk.W, tk.E))
-    ttk.Button(self.data_frame, text="Excluir", command=self.delete_record).grid(row=3, column=3, padx=5, pady=5, sticky=(tk.W, tk.E))
+    def read_records(self):
+        # Método para ler registros do banco de dados e exibi-los na lista
+        # ... (código omitido para brevidade)
 
-    # Lista para exibir registros
-    self.tree = ttk.Treeview(self.root, columns=("ID", "Nome", "Email", "Telefone"), show="headings", height=10)
-    self.tree.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+    def update_record(self):
+        # Método para atualizar um registro existente
+        # ... (código omitido para brevidade)
 
-    # ...
-Operações CRUD
-python
-Copy code
-def create_record(self):
-    # ...
+    def delete_record(self):
+        # Método para excluir um registro
+        # ... (código omitido para brevidade)
 
-def read_records(self):
-    # ...
+    def clear_entries(self):
+        # Método para limpar as entradas de texto
+        # ... (código omitido para brevidade)
 
-def update_record(self):
-    # ...
-
-def delete_record(self):
-    # ...
-
-
-## Limpeza de Entradas
-python
-Copy code
-def clear_entries(self):
-    self.nome_entry.delete(0, tk.END)
-    self.email_entry.delete(0, tk.END)
-    self.telefone_entry.delete(0, tk.END)
-
-## Execução do Aplicativo
-python
-Copy code
 if __name__ == "__main__":
+    # Criação da instância da aplicação e execução do loop principal
     root = tk.Tk()
     app = CRUDApp(root)
     root.mainloop()
-## Este é um exemplo básico para fins educativos. Certifique-se de adaptar o código conforme necessário para atender aos requisitos específicos do seu projeto.
-
-css
-Copy code
-
-## Você pode copiar e colar esse conteúdo em um arquivo com a extensão `.md` para visualizá-lo como um documento Markdown.
-
-
 
